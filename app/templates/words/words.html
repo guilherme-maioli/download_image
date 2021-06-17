@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include 'components/notification.html' %}
+
+</p>
+<a href="{{ url_for('words.word_add') }}" class="btn btn-success">
+  <i class="fa fa-plus" aria-hidden="true"></i>
+  Adicionar Palavra
+</a>
+
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">De</th>
+      <th scope="col">Para</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for word in words %}
+      <tr>
+        <td>{{ word.word_from }}</td>
+        <td>{{ word.word_to }}</td>
+        <td> 
+          <a class="btn btn-danger btn-sn" href="{{ url_for('words.word_delete', id=word.id) }}">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<style>
+  table {
+      margin-top: 20px;
+  }
+</style>
+
+{% endblock %}

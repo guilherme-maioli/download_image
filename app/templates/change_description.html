@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include 'components/notification.html' %}
+
+</p>
+<a href="{{ url_for('words.list_words') }}" class="btn btn-success">
+  <i class="fa fa-plus" aria-hidden="true"></i>
+  Palavras
+</a>
+
+<form action="{{ url_for('words.change_description') }}" method="POST" enctype="multipart/form-data">
+  
+  <div class="form-group mb-3">
+    <input class="form-control form-control-sm" id="formFileSm" type="file" name="file_description" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+  </div>
+
+  <div class="mb-3">
+    <label>Campo Descrição</label>
+    <input type="text" name="description" class="form-control">
+  </div>
+    
+  <div class="mb-3">
+    <label>Campo Marca</label>
+    <input type="text" name="label" class="form-control">
+  </div>
+
+  <button type="submit" class="btn btn-success btn-block btn-lg">Baixar</button>	
+</form>
+
+<style>
+  form {
+      margin-top: 50px;
+  }
+  #formFileSm {
+    height: 35px;
+  }
+</style>
+
+{% endblock %}
